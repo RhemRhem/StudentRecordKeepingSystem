@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
+use app\models\Department;
 ?>
 
 <!DOCTYPE html>
@@ -23,9 +25,8 @@ body  {
 
     <?php $form = ActiveForm::begin(); ?>
    
-
-
-      <?= $form->field($model, 'dept_id')->textInput(['maxlength' => true]) ?>
+     <?= $form->field($model, 'dept_id')->dropDownList(ArrayHelper::map(
+            Department::find()->asArray()->all(), 'id','id'))?>
 
     <?= $form->field($model, 'courseName')->textInput(['maxlength' => true]) ?>
 

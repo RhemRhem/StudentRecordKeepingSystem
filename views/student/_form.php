@@ -2,6 +2,8 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\Url;
+use yii\helpers\ArrayHelper;
+use app\models\Course;
 use dosamigos\datepicker\DatePicker;
 ?>
 <!DOCTYPE html>
@@ -22,8 +24,8 @@ body  {
 
 <div class="student-form">
     <?php $form = ActiveForm::begin(); ?>
-
-    <?= $form->field($model, 'course_id')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model, 'course_id')->dropDownList(ArrayHelper::map(
+            Course::find()->asArray()->all(), 'id','id'))?>
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'gender')->dropdownList(['Male' => 'Male', 'Female' => 'Female'], ['prompt' => '--Select Gender--']) ?>

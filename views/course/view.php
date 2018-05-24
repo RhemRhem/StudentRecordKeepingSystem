@@ -43,7 +43,8 @@ body  {
         'attributes' => [
             'id',
             'courseName',
-            'description'
+            'description',
+            'dept_id'
         ],
     ]) ?>
 

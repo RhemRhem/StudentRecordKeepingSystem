@@ -39,6 +39,7 @@ body  {
         </td>  
          <td><?= $model->gender ?></td>
          <td><?= $model->birthdate ?></td>
+         <td><?= $model->course_id ?></td>
     </tr>
     <?php endforeach; ?>
 </table>

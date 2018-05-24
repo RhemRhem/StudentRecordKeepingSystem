@@ -42,7 +42,8 @@ body  {
   				'id',
   				'name',
   				'gender',
-  				'birthdate'
+  				'birthdate',
+          'course_id'
   			]
 
   		]);

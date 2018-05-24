@@ -36,7 +36,8 @@ body  {
     <td>
             <?= Html::a($model->courseName, ['/course/view', 'id'=>$model->id]); ?>
         </td>  
-        <td><?= $model->description ?></td>       
+        <td><?= $model->description ?></td> 
+         <td><?= $model->dept_id ?></td> 
     </tr>
     <?php endforeach; ?>
 </table>
