@@ -4,9 +4,17 @@ namespace app\models;
 
 class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
 {
+
+    const STATUS_DELETED = 0;
+    const STATUS_ACTIVE = 10;
+    const ROLE_ADMIN = 100;
+    const ROLE_EDITOR = 200;
+    const ROLE_AUTHOR = 300;
+
     public $id;
     public $username;
     public $password;
+    public $role;
     public $authKey;
     public $accessToken;
 
@@ -15,15 +23,17 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
             'id' => '100',
             'username' => 'admin',
             'password' => 'admin',
+            'role' => '100',
             'authKey' => 'test100key',
-            'accessToken' => '100-token',
+            'accessToken' => '100',
         ],
         '101' => [
             'id' => '101',
-            'username' => 'demo',
-            'password' => 'demo',
+            'username' => 'user',
+            'password' => 'user',
+            'role' => '300',
             'authKey' => 'test101key',
-            'accessToken' => '101-token',
+            'accessToken' => '300',
         ],
     ];
 
@@ -34,6 +44,11 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
     public static function findIdentity($id)
     {
         return isset(self::$users[$id]) ? new static(self::$users[$id]) : null;
+    }
+
+    public static function findRole($role)
+    {
+        return isset(self::$users[$role]) ? new static(self::$users[$role]) : null;
     }
 
     /**
@@ -66,6 +81,7 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
 
         return null;
     }
+    
 
     /**
      * {@inheritdoc}
@@ -82,6 +98,7 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
     {
         return $this->authKey;
     }
+
 
     /**
      * {@inheritdoc}
